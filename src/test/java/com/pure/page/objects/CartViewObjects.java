@@ -1,6 +1,7 @@
 package com.pure.page.objects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
@@ -55,9 +56,18 @@ public class CartViewObjects extends BaseAbstractPage{
     }
 
     public CartViewObjects inputQuantityByName(String itemName, Integer quantity) {
-        By itemLocator = buildXpath(Locators.ITEM_XPATH, itemName);
-        inputText(getSubElementOfElement(itemLocator, Locators.QUANTITY_FIELD), quantity.toString());
+        WebElement inputField = getSubElementOfElement(buildXpath(Locators.ITEM_XPATH, itemName), Locators.QUANTITY_FIELD);
+        clearTextFieldFromKeyboard(inputField);
+        inputText(inputField, quantity.toString());
         return this;
+    }
+
+    public String getPriceForProduct(String itemName) {
+        return getText(getSubElementOfElement(buildXpath(Locators.ITEM_XPATH, itemName), Locators.PRODUCT_PRICE));
+    }
+
+    public String getTotalPriceForProduct(String itemName) {
+        return getText(getSubElementOfElement(buildXpath(Locators.ITEM_XPATH, itemName), Locators.TOTAL_PRODUCT_PRICE));
     }
 
     interface Locators {
@@ -71,6 +81,8 @@ public class CartViewObjects extends BaseAbstractPage{
         By NUMBER_OF_ITEMS_IN_ITEMS_LIST = By.cssSelector("span[data-hook='items-count']");
         By PRODUCT_NAME = byDataHook("product-name");
         By REMOVE_BUTTON = byDataHook("remove-button");
+        By PRODUCT_PRICE = byDataHook("product-price");
+        By TOTAL_PRODUCT_PRICE = byDataHook("product-total-price");
         By QUANTITY_FIELD = By.cssSelector("[aria-label='quantity']");
     }
 }

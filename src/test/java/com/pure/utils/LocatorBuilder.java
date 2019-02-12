@@ -32,10 +32,6 @@ public class LocatorBuilder {
         return By.xpath(String.format(xpathExpression, texts));
     }
 
-    public static By buildChildXpath(String xpathExpression) {
-        return By.xpath("." + xpathExpression);
-    }
-
     public static By byDataHook(String dataHook) {
         return By.cssSelector("[data-hook='" + dataHook + "']");
     }

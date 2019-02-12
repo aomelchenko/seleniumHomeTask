@@ -35,8 +35,6 @@ public class NavMenuObjects {
     }
 
     public StoreObjects clickOnStoresButton() {
-//        waitUntilPresent(Locator.SCROLL_TO_TOP, 5);
-//        scrollIntoView(Locator.SCROLL_TO_TOP);
         waitUntilClickable(Locators.STORES_BUTTON, 2);
         clickOn(Locators.STORES_BUTTON);
         return new StoreObjects();

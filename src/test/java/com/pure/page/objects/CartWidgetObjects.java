@@ -84,7 +84,6 @@ public class CartWidgetObjects {
     interface Locators {
         String PRODUCT_BY_NAME_XPATH = "//*[@data-hook='cart-widget-item' and .//*[@class ='item-name' and contains(text(), '%s')]]";
 
-
         By WIDGET_FRAME = byFrameName("cartwidgetPopup");
         By PRODUCT_ITEM = byDataHook("cart-widget-item");
         By WIDGET_CONTENT = byDataHook("cart-widget-dropdown");
